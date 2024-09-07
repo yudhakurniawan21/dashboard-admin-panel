@@ -14,8 +14,6 @@ const PrivateRoute = ({ children, requiredRole }: PrivateRouteProps) => {
     (state) => state.auth
   );
 
-  console.log(user?.role, requiredRole);
-
   if (loading)
     return (
       <Box>

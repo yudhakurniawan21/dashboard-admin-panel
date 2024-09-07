@@ -33,9 +33,6 @@ const setTokenExpiry = (expiryDate: Date) => {
 const computeIsAuthenticated = (): boolean => {
   const token = localStorage.getItem("accessToken");
   const expiry = getTokenExpiry();
-  console.log(new Date());
-  console.log(expiry);
-  
   if (token && expiry) {
     return new Date() < expiry;
   }
@@ -43,7 +40,7 @@ const computeIsAuthenticated = (): boolean => {
 };
 
 const initialState: AuthState = {
-  user: JSON.parse(localStorage.getItem('user') || 'null'),
+  user: JSON.parse(localStorage.getItem("user") || "null"),
   accessToken: localStorage.getItem("accessToken") || null,
   isAuthenticated: computeIsAuthenticated(),
   loading: false,
@@ -66,7 +63,7 @@ const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.isAuthenticated = true;
       state.loading = false;
-      localStorage.setItem('user', JSON.stringify(state.user));
+      localStorage.setItem("user", JSON.stringify(state.user));
       localStorage.setItem("accessToken", action.payload.accessToken);
       setTokenExpiry(new Date(Date.now() + defaultExpiryTime)); // Set default expiry
     },
@@ -78,7 +75,7 @@ const authSlice = createSlice({
       state.user = null;
       state.accessToken = null;
       state.isAuthenticated = false;
-      localStorage.removeItem('user');
+      localStorage.removeItem("user");
       localStorage.removeItem("accessToken");
       localStorage.removeItem("tokenExpiry");
     },

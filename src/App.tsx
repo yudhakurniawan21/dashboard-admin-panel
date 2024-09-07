@@ -17,8 +17,6 @@ const App = () => {
   // const dispatch = useAppDispatch();
   const { isAuthenticated, loading } = useAppSelector((state) => state.auth);
 
-  console.log(isAuthenticated);
-
   const theme = createTheme({
     fontFamily: "Open Sans, sans-serif",
     primaryColor: "cyan",
